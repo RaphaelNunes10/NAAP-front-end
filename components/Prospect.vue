@@ -1,88 +1,78 @@
 <template>
-  <div class="white--text">
-    <v-row justify="center" align="center">
-      <v-col cols="12" sm="2" align="right" class="day-col">
-        <v-container>
-          <v-row align="center" style="height: 100px">
-            <v-col cols="12">
-              <span class="text-body-1 day-text"><strong>Today</strong></span>
-            </v-col>
-          </v-row>
-        </v-container>
+  <container class="fill-height">
+    <v-row no-gutters style="height: 50%">
+      <v-col cols="2" class="day-col pt-5">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12" align="right">
+            <v-container class="px-5 py-5">
+              <div class="day-text">Today</div>
+            </v-container>
+          </v-col>
+        </v-row>
       </v-col>
-      <v-col cols="12" sm="10" class="data-col">
-        <v-container>
-          <v-row align="center" style="height: 100px">
-            <v-col cols="12" sm="8">
-              <div class="text-body-1 label">
-                <small>Revenues</small>
+      <v-col cols="6" class="data-col">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12">
+            <v-container class="px-5 py-5">
+              <div class="label"><small>Revenues</small></div>
+              <div>
+                <sup class="big-text">R$</sup>
+                <span class="large-text">952.560,00</span>
               </div>
-              <br />
-              <div class="text-body-1">
-                <strong>
-                  <span class="big-text">R$</span>
-                  <span class="large-text">{{}}</span>
-                </strong>
+            </v-container>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="4" class="data-col">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12">
+            <v-container class="px-5 py-5">
+              <div class="label"><small>Tickets</small></div>
+              <div>
+                <span class="large-text">4320</span>
               </div>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <div class="text-body-1 label">
-                <small>Tickets</small>
-              </div>
-              <br />
-              <div class="text-body-1">
-                <strong>
-                  <span class="large-text">{{}}</span>
-                </strong>
-              </div>
-            </v-col>
-          </v-row>
-        </v-container>
+            </v-container>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
-    <v-row justify="center" align="center">
-      <v-col cols="12" sm="2" align="right" class="day-col">
-        <v-container>
-          <v-row align="center" style="height: 100px">
-            <v-col cols="12">
-              <span class="text-body-1 day-text"
-                ><strong>Yesterday</strong></span
-              >
-            </v-col>
-          </v-row>
-        </v-container>
+    <v-row no-gutters style="height: 50%">
+      <v-col cols="2" class="day-col" align="right">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12" align="right">
+            <v-container class="px-5 py-5">
+              <div class="day-text">Yesterday</div>
+            </v-container>
+          </v-col>
+        </v-row>
       </v-col>
-      <v-col cols="12" sm="10" class="data-col">
-        <v-container>
-          <v-row align="center" style="height: 100px">
-            <v-col cols="12" sm="8">
-              <div class="text-body-1 label">
-                <small>Revenues</small>
+      <v-col cols="6" class="data-col">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12">
+            <v-container class="px-5 py-5">
+              <div class="d-block d-sm-none label"><small>Revenues</small></div>
+              <div>
+                <sup class="small-text">R$</sup>
+                <span class="medium-text">754.521,32</span>
               </div>
-              <br />
-              <div class="text-body-1">
-                <strong>
-                  <span class="big-text">R$</span>
-                  <span class="large-text">{{}}</span>
-                </strong>
+            </v-container>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col cols="4" class="data-col">
+        <v-row no-gutters align="center" class="fill-height">
+          <v-col cols="12">
+            <v-container class="px-5 py-5">
+              <div class="d-block d-sm-none label"><small>Tickets</small></div>
+              <div>
+                <span class="medium-text">3259</span>
               </div>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <div class="text-body-1 label">
-                <small>Tickets</small>
-              </div>
-              <br />
-              <div class="text-body-1">
-                <strong>
-                  <span class="large-text">{{}}</span>
-                </strong>
-              </div>
-            </v-col>
-          </v-row>
-        </v-container>
+            </v-container>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
-  </div>
+  </container>
 </template>
 
 <script>
@@ -106,11 +96,23 @@ export default {
 }
 
 .day-text {
+  font-size: 14px;
+  font-weight: 600;
   color: #00de16;
 }
 
 .data-col {
   background: #323232;
+}
+
+.small-text {
+  font-size: 12px;
+  font-weight: 200 !important;
+}
+
+.medium-text {
+  font-size: 22px;
+  font-weight: 300 !important;
 }
 
 .big-text {
@@ -119,10 +121,5 @@ export default {
 
 .large-text {
   font-size: 52px;
-}
-
-.label {
-  color: #00de16;
-  font-weight: 300 !important;
 }
 </style>

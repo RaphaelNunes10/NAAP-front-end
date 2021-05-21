@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <div class="text-title">Transactions</div>
+  <v-container class="px-5 py-5">
+    <div class="header">Transactions</div>
   </v-container>
 </template>
 

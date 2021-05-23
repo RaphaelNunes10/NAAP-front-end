@@ -19,14 +19,14 @@
                 <template v-slot:activator="{ on, attrs }">
                   <div class="text-box" v-bind="attrs" v-on="on">
                     <span class="large-text">
-                      <sup class="big-text">R$</sup> 952.560,00
+                      <sup class="big-text">R$</sup> {{ data.today.revenues }}
                     </span>
                     &nbsp;
                     <v-icon size="40" color="#00DE16"> mdi-chevron-up </v-icon>
                   </div>
                 </template>
                 <v-card color="#323232">
-                  <v-container>R$ 952.560,00</v-container>
+                  <v-container>R$ {{ data.today.revenues }}</v-container>
                 </v-card>
               </v-menu>
             </v-container>
@@ -41,13 +41,13 @@
               <v-menu dark absolute offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <div class="text-box" v-bind="attrs" v-on="on">
-                    <span class="large-text">4320</span>
+                    <span class="large-text">{{ data.today.tickets }}</span>
                     &nbsp;
                     <v-icon size="40" color="#00DE16"> mdi-chevron-up </v-icon>
                   </div>
                 </template>
                 <v-card color="#323232">
-                  <v-container>4320</v-container>
+                  <v-container>{{ data.today.tickets }}</v-container>
                 </v-card>
               </v-menu>
             </v-container>
@@ -74,12 +74,13 @@
                 <template v-slot:activator="{ on, attrs }">
                   <div class="text-box" v-bind="attrs" v-on="on">
                     <span class="medium-text">
-                      <sup class="small-text">R$</sup> 754.521,32
+                      <sup class="small-text">R$</sup>
+                      {{ data.yesterday.revenues }}
                     </span>
                   </div>
                 </template>
                 <v-card color="#323232">
-                  <v-container>754.521,32</v-container>
+                  <v-container>R$ {{ data.yesterday.revenues }}</v-container>
                 </v-card>
               </v-menu>
             </v-container>
@@ -94,11 +95,13 @@
               <v-menu dark absolute offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <div class="text-box" v-bind="attrs" v-on="on">
-                    <span class="medium-text">3259</span>
+                    <span class="medium-text">
+                      {{ data.yesterday.tickets }}
+                    </span>
                   </div>
                 </template>
                 <v-card color="#323232">
-                  <v-container>3259</v-container>
+                  <v-container>{{ data.yesterday.tickets }}</v-container>
                 </v-card>
               </v-menu>
             </v-container>
@@ -111,6 +114,9 @@
 
 <script>
 export default {
+  props: {
+    data: {},
+  },
   computed: {
     padding() {
       switch (this.$vuetify.breakpoint.name) {

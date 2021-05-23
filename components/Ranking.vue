@@ -9,18 +9,18 @@
     <v-container class="px-5 py-5 adjust-height">
       <div class="label"><small>Ranking</small></div>
       <div class="header mb-2">{{ title }}</div>
-      <v-row>
+      <v-row v-for="item in data" :key="item">
         <v-col cols="6">
           <v-list-item class="pl-0">
             <v-list-item-content>
               <v-menu absolute offset-y>
                 <template v-slot:activator="{ on, attrs }">
                   <v-list-item-title v-bind="attrs" v-on="on">
-                    <strong>Submarino</strong>
+                    <strong>{{ item.store_name }}</strong>
                   </v-list-item-title>
                 </template>
                 <v-card :dark="dark" :color="color">
-                  <v-container>Submarino</v-container>
+                  <v-container>{{ item.store_name }}</v-container>
                 </v-card>
               </v-menu>
             </v-list-item-content>
@@ -35,13 +35,13 @@
                     <span v-if="title == 'Revenues'">
                       <strong><small>R$</small></strong>
                     </span>
-                    334.231,00
+                    {{ item.total }}
                   </v-list-item-title>
                 </template>
                 <v-card :dark="dark" :color="color">
                   <v-container>
                     <span v-if="title == 'Revenues'">R$</span>
-                    334.231,00
+                    {{ item.total }}
                   </v-container>
                 </v-card>
               </v-menu>
@@ -59,7 +59,7 @@ export default {
     title: null,
     color: null,
     dark: false,
-    data: [],
+    data: {},
   },
   computed: {
     padding() {

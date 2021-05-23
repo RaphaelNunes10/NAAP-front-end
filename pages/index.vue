@@ -4,30 +4,41 @@
       <v-col cols="12" md="8" lg="6" class="fill-height">
         <v-row no-gutters align="start" class="fill-height">
           <v-col cols="12">
-            <prospect />
+            <summary-projection :data="data.summary" />
           </v-col>
           <v-col cols="12" sm="6" class="fill-height">
-            <ranking title="Revenues" color="#EFEFEF" />
+            <ranking
+              title="Revenues"
+              color="#EFEFEF"
+              :data="data.revenues_ranking"
+            />
           </v-col>
           <v-col cols="12" sm="6" class="fill-height">
-            <ranking title="Tickets" color="#282828" dark />
+            <ranking
+              dark
+              title="Tickets"
+              color="#282828"
+              :data="data.tickets_ranking"
+            />
           </v-col>
         </v-row>
       </v-col>
       <v-col cols="4" lg="6" class="d-none d-md-block">
-        <transactions />
+        <transactions :data="data.transactions" />
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import Prospect from "~/components/Prospects.vue";
+import { mapState } from "vuex";
+import SummaryProjection from "~/components/Summary.vue";
 import Ranking from "~/components/Ranking.vue";
 import Transactions from "~/components/Transactions.vue";
 export default {
-  components: { Prospect, Ranking, Transactions },
+  components: { SummaryProjection, Ranking, Transactions },
   computed: {
+    ...mapState("Api", ["data"]),
     padding() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

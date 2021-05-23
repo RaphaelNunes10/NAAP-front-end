@@ -3,7 +3,7 @@
     <v-container class="px-5 py-5">
       <div class="header">Transactions</div>
       <br />
-      <v-row>
+      <v-row v-for="item in data" :key="item">
         <v-col cols="6">
           <v-list-item class="pl-0">
             <v-list-item-content>
@@ -14,11 +14,11 @@
                     v-bind="attrs"
                     v-on="on"
                   >
-                    Mercado Livre
+                    {{ item.store_name }}
                   </v-list-item-title>
                 </template>
                 <v-card color="#EFEFEF">
-                  <v-container>Mercado Livre</v-container>
+                  <v-container>{{ item.store_name }}</v-container>
                 </v-card>
               </v-menu>
               <v-list-item-subtitle class="item-subtitle">
@@ -37,11 +37,11 @@
                     v-on="on"
                     class="item-title"
                   >
-                    <strong>R$ 32,00</strong>
+                    <strong>R$ {{ item.total }}</strong>
                   </v-list-item-title>
                 </template>
                 <v-card color="#EFEFEF">
-                  <v-container>R$ 32,00</v-container>
+                  <v-container>R$ {{ item.total }}</v-container>
                 </v-card>
               </v-menu>
             </v-list-item-content>
@@ -54,6 +54,9 @@
 
 <script>
 export default {
+  props: {
+    data: {},
+  },
   computed: {
     padding() {
       switch (this.$vuetify.breakpoint.name) {

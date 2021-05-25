@@ -15,7 +15,7 @@
           </v-col>
           <v-col cols="8" md="11" align="left">
             <span class="title">
-              BLACKFRIDAY<strong>{{ currentYear }}</strong>
+              BLACKFRIDAY<strong>{{ new Date().getFullYear() }}</strong>
             </span>
           </v-col>
           <v-col cols="2" md="1" align="center" class="d-block d-md-none">
@@ -44,7 +44,6 @@ import Transactions from "~/components/Transactions.vue";
 export default {
   data() {
     return {
-      currentYear: "2021",
       drawer: false,
     };
   },

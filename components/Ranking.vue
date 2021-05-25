@@ -5,59 +5,87 @@
     :color="color"
     flat
     :class="`fill-height ${padding}`"
+    v-if="data"
   >
-    <v-container class="px-5 py-5 adjust-height">
+    <v-container class="px-5 py-5" style="height: 100%">
       <div class="label"><small>Ranking</small></div>
       <div class="header mb-2">{{ title }}</div>
-      <v-row v-for="item in data" :key="item">
-        <v-col cols="6">
-          <v-list-item class="pl-0">
-            <v-list-item-content>
-              <v-menu absolute offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-list-item-title v-bind="attrs" v-on="on">
-                    <strong>{{ item.store_name }}</strong>
-                  </v-list-item-title>
-                </template>
-                <v-card :dark="dark" :color="color">
-                  <v-container>{{ item.store_name }}</v-container>
-                </v-card>
-              </v-menu>
-            </v-list-item-content>
-          </v-list-item>
-        </v-col>
-        <v-col cols="6" align="right">
-          <v-list-item class="pl-0">
-            <v-list-item-content>
-              <v-menu absolute offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-list-item-title v-bind="attrs" v-on="on">
-                    <span v-if="title == 'Revenues'">
+      <simplebar style="overflow-x: hidden; height: 84%; max-height: 100vh">
+        <v-row v-for="item in data" :key="item.id">
+          <v-col cols="6">
+            <v-list-item class="pl-0">
+              <v-list-item-content>
+                <v-menu absolute offset-y>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title v-bind="attrs" v-on="on">
+                      <strong>{{ item.store_name }}</strong>
+                    </v-list-item-title>
+                  </template>
+                  <v-card :dark="dark" :color="color">
+                    <v-container>{{ item.store_name }}</v-container>
+                  </v-card>
+                </v-menu>
+              </v-list-item-content>
+            </v-list-item>
+          </v-col>
+          <v-col cols="6" align="right">
+            <v-list-item class="pl-0">
+              <v-list-item-content>
+                <v-menu absolute offset-y v-if="title == 'Revenues'">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title v-bind="attrs" v-on="on">
                       <strong><small>R$</small></strong>
-                    </span>
-                    {{ item.total }}
-                  </v-list-item-title>
-                </template>
-                <v-card :dark="dark" :color="color">
-                  <v-container>
-                    <span v-if="title == 'Revenues'">R$</span>
-                    {{ item.total }}
-                  </v-container>
-                </v-card>
-              </v-menu>
-            </v-list-item-content>
-          </v-list-item>
-        </v-col>
-      </v-row>
+                      {{
+                        item.total.toLocaleString("pt-BR", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      }}
+                    </v-list-item-title>
+                  </template>
+                  <v-card :dark="dark" :color="color">
+                    <v-container>
+                      R$
+                      {{
+                        item.total.toLocaleString("pt-BR", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      }}
+                    </v-container>
+                  </v-card>
+                </v-menu>
+                <v-menu absolute offset-y v-else>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title v-bind="attrs" v-on="on">
+                      {{ item.total }}
+                    </v-list-item-title>
+                  </template>
+                  <v-card :dark="dark" :color="color">
+                    <v-container>
+                      {{ item.total }}
+                    </v-container>
+                  </v-card>
+                </v-menu>
+              </v-list-item-content>
+            </v-list-item>
+          </v-col>
+        </v-row>
+      </simplebar>
     </v-container>
   </v-card>
 </template>
 
 <script>
+import Simplebar from "simplebar-vue";
+import "simplebar/dist/simplebar.min.css";
 export default {
+  components: {
+    Simplebar,
+  },
   props: {
-    title: null,
-    color: null,
+    title: "",
+    color: "",
     dark: false,
     data: {},
   },

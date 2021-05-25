@@ -2,8 +2,10 @@
   <v-app style="min-width: 300px">
     <top-bar />
     <spinner v-if="spinner" />
-    <v-main>
-      <nuxt />
+    <v-main style="height: 100vh">
+      <v-sheet height="100%">
+        <nuxt />
+      </v-sheet>
     </v-main>
   </v-app>
 </template>

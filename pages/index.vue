@@ -1,19 +1,19 @@
 <template>
-  <div :class="heightClass" style="overflow-y: hidden">
+  <div :class="heightClass" v-if="data">
     <v-row no-gutters justify="center" class="fill-height">
       <v-col cols="12" md="8" lg="6" class="fill-height">
         <v-row no-gutters align="start" class="fill-height">
-          <v-col cols="12">
+          <v-col cols="12" style="height: 40%; min-height: 250px">
             <summary-projection :data="data.summary" />
           </v-col>
-          <v-col cols="12" sm="6" class="fill-height">
+          <v-col cols="12" sm="6" style="height: 60%">
             <ranking
               title="Revenues"
               color="#EFEFEF"
               :data="data.revenues_ranking"
             />
           </v-col>
-          <v-col cols="12" sm="6" class="fill-height">
+          <v-col cols="12" sm="6" style="height: 60%">
             <ranking
               dark
               title="Tickets"
@@ -23,7 +23,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="4" lg="6" class="d-none d-md-block">
+      <v-col cols="4" lg="6" class="d-none d-md-block fill-height">
         <transactions :data="data.transactions" />
       </v-col>
     </v-row>

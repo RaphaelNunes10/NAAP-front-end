@@ -1,59 +1,95 @@
 <template>
-  <v-card tile light color="#EFEFEF" flat :class="`fill-height ${padding}`">
-    <v-container class="px-5 py-5">
+  <v-card
+    tile
+    light
+    color="#EFEFEF"
+    flat
+    :class="`fill-height ${padding}`"
+    v-if="data"
+  >
+    <v-container class="px-5 py-5" style="height: 100%">
       <div class="header">Transactions</div>
       <br />
-      <v-row v-for="item in data" :key="item">
-        <v-col cols="6">
-          <v-list-item class="pl-0">
-            <v-list-item-content>
-              <v-menu absolute offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-list-item-title
-                    class="item-title mb-3"
-                    v-bind="attrs"
-                    v-on="on"
-                  >
-                    {{ item.store_name }}
-                  </v-list-item-title>
-                </template>
-                <v-card color="#EFEFEF">
-                  <v-container>{{ item.store_name }}</v-container>
-                </v-card>
-              </v-menu>
-              <v-list-item-subtitle class="item-subtitle">
-                <small>10:32</small>
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-col>
-        <v-col cols="6" align="right">
-          <v-list-item class="pl-0">
-            <v-list-item-content>
-              <v-menu absolute offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-list-item-title
-                    v-bind="attrs"
-                    v-on="on"
-                    class="item-title"
-                  >
-                    <strong>R$ {{ item.total }}</strong>
-                  </v-list-item-title>
-                </template>
-                <v-card color="#EFEFEF">
-                  <v-container>R$ {{ item.total }}</v-container>
-                </v-card>
-              </v-menu>
-            </v-list-item-content>
-          </v-list-item>
-        </v-col>
-      </v-row>
+      <simplebar style="overflow-x: hidden; height: 92%">
+        <v-row v-for="item in data" :key="item.id">
+          <v-col cols="6">
+            <v-list-item class="pl-0">
+              <v-list-item-content>
+                <v-menu absolute offset-y>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title
+                      class="item-title mb-3"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      {{ item.store_name }}
+                    </v-list-item-title>
+                  </template>
+                  <v-card color="#EFEFEF">
+                    <v-container>{{ item.store_name }}</v-container>
+                  </v-card>
+                </v-menu>
+                <v-list-item-subtitle class="item-subtitle">
+                  <small>{{
+                    new Date(item.date).toLocaleTimeString("pt-br", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      timeZone: "UTC",
+                    })
+                  }}</small>
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-col>
+          <v-col cols="6" align="right">
+            <v-list-item class="pl-0">
+              <v-list-item-content>
+                <v-menu absolute offset-y>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title
+                      v-bind="attrs"
+                      v-on="on"
+                      class="item-title"
+                    >
+                      <strong>
+                        R$
+                        {{
+                          item.total.toLocaleString("pt-BR", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                        }}
+                      </strong>
+                    </v-list-item-title>
+                  </template>
+                  <v-card color="#EFEFEF">
+                    <v-container>
+                      R$
+                      {{
+                        item.total.toLocaleString("pt-BR", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      }}
+                    </v-container>
+                  </v-card>
+                </v-menu>
+              </v-list-item-content>
+            </v-list-item>
+          </v-col>
+        </v-row>
+      </simplebar>
     </v-container>
   </v-card>
 </template>
 
 <script>
+import Simplebar from "simplebar-vue";
+import "simplebar/dist/simplebar.min.css";
 export default {
+  components: {
+    Simplebar,
+  },
   props: {
     data: {},
   },

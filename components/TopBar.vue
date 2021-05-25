@@ -33,12 +33,13 @@
       v-model="drawer"
       :width="drawerWidth"
     >
-      <transactions />
+      <transactions :data="data.transactions" />
     </v-navigation-drawer>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Transactions from "~/components/Transactions.vue";
 export default {
   data() {
@@ -51,6 +52,7 @@ export default {
     Transactions,
   },
   computed: {
+    ...mapState("Api", ["data"]),
     logoSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

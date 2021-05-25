@@ -15,6 +15,17 @@ import { mapState, mapActions } from "vuex";
 import TopBar from "~/components/TopBar.vue";
 import Spinner from "~/components/Spinner.vue";
 export default {
+  head() {
+    return {
+      style: [
+        {
+          hid: "vuetifyTheme",
+          type: "text/css",
+          cssText: this.$vuetify.theme.generatedStyles,
+        },
+      ],
+    };
+  },
   components: {
     TopBar,
     Spinner,

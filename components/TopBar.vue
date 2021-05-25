@@ -9,7 +9,7 @@
               :width="logoSize"
               :height="logoSize"
               class="logo"
-              src="logo.svg"
+              src="/logo.svg"
               alt="logo"
             />
           </v-col>

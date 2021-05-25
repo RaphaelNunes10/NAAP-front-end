@@ -1,0 +1,17 @@
+{
+  "Ranking": {
+    "description": "Auto imported from components/Ranking.vue"
+  },
+  "Spinner": {
+    "description": "Auto imported from components/Spinner.vue"
+  },
+  "Summary": {
+    "description": "Auto imported from components/Summary.vue"
+  },
+  "TopBar": {
+    "description": "Auto imported from components/TopBar.vue"
+  },
+  "Transactions": {
+    "description": "Auto imported from components/Transactions.vue"
+  }
+}

@@ -3,7 +3,7 @@
     <v-row no-gutters justify="center" class="fill-height">
       <v-col cols="12" md="8" lg="6" class="fill-height">
         <v-row no-gutters align="start" class="fill-height">
-          <v-col cols="12" style="height: 40%; min-height: 250px">
+          <v-col cols="12" style="height: 40%; min-height: 200px">
             <summary-projection :data="data.summary" />
           </v-col>
           <v-col cols="12" sm="6" style="height: 60%">
@@ -54,6 +54,8 @@ export default {
     heightClass() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
+          return "full-height";
+        case "sm":
           return "full-height";
         default:
           return "fill-height";

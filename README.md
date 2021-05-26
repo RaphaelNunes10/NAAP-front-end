@@ -32,7 +32,7 @@ All of the above is provided by the Vue CLI Package.
 
 > git pull origin master
 
-* Install the project packages
+* Install the project packages:
 
 > npm install
 
@@ -91,7 +91,7 @@ Tudo citado a cima é providenciado pelo pacote Vue CLI.
 
 > git pull origin master
 
-* Instale os pacotes do projeto
+* Instale os pacotes do projeto:
 
 > npm install
 

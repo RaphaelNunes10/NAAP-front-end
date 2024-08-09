@@ -1,5 +1,12 @@
 # NAAP-front-end
 
+## ⚠️ DEPRECATED | INATIVO ⚠️
+
+See | Acesse: https://github.com/RaphaelNunes10/nuxt3-black-friday-dashboard
+
+<details>
+<summary>Click to view old README content | Clique para ver o conteúdo antigo</summary>
+
 ## Introduction
 
 This project is meant to be distributed as a practical test for a job proposal at NAAP Solutions as well as an easy-to-access repo for learning about the basics of Vue.JS, Nuxt, and Axios.
@@ -116,3 +123,4 @@ Tudo é bastante responsivo, alocando a seção "*Transactions*" para *mobile* e
 
 Tempo e dinheiro estão em "pt-BR".
 
+</details>
